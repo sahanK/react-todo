@@ -21,7 +21,7 @@ function App() {
         dummies.push({text: `dummy ${item}`, completed: false, id: Math.random()*1000});
       }
       setTodos(dummies);
-      localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("todos", JSON.stringify(dummies));
     } else{
       let todolocal = JSON.parse(localStorage.getItem("todos"));
       setTodos(todolocal);
