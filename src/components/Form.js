@@ -7,10 +7,14 @@ const Form = ({inputText, setInputText, todos, setTodos, setStatus}) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        setTodos([
-            ...todos, {text: inputText, completed: false, id: Math.random()*1000}
-        ]);
-        setInputText("");
+        if(inputText === ""){
+            alert("Please add a task!");
+        } else{
+            setTodos([
+                ...todos, {text: inputText, completed: false, id: Math.random()*1000}
+            ]);
+            setInputText("");
+        }
     }
 
     const statusHandler = (event) => {
