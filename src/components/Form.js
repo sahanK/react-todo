@@ -24,7 +24,7 @@ const Form = ({inputText, setInputText, todos, setTodos, setStatus}) => {
                 <i className="fas fa-plus-square"></i>
             </button>
             <div onChange={statusHandler} className="select">
-                <select name="todos" clsassName="filter-todo">
+                <select name="todos" className="filter-todo">
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
