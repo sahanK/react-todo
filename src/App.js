@@ -46,6 +46,7 @@ function App() {
       </header>
       <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} setStatus={setStatus}/>
       <TodoList todos={todos} setTodos={setTodos} filteredTodos={filteredTodos}/>
+      <h3 style={{textAlign: 'center'}}>Tasks : {todos.length}</h3>
     </div>
   );
 }
