@@ -10,10 +10,15 @@ const Form = ({inputText, setInputText, todos, setTodos, setStatus}) => {
         if(inputText === ""){
             alert("Please add a task!");
         } else{
-            setTodos([
-                ...todos, {text: inputText, completed: false, id: Math.random()*1000}
-            ]);
-            setInputText("");
+            let uncompleted = todos.filter(todo => todo.completed === false);
+            if(uncompleted.length >= 5){
+                alert("There are Many uncompleted tasks!");
+            } else{
+                setTodos([
+                    ...todos, {text: inputText, completed: false, id: Math.random()*1000}
+                ]);
+                setInputText("");
+            }
         }
     }
 
