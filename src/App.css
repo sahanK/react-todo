@@ -77,6 +77,12 @@
   .complete-btn {
     background: rgb(11, 212, 162);
   }
+  .complete-btn:hover{
+    background: rgb(110, 231, 110);
+  }
+  .trash-btn:hover{
+    background: rgb(185, 57, 57);
+  }
   .todo-item {
     padding: 0rem 0.5rem;
   }
