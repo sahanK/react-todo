@@ -15,6 +15,7 @@ const TodoList = ({todos, setTodos, filteredTodos}) => {
                         todo={todo}/>
                 ))}
             </ul>
+            <h3 style={{textAlign: 'center'}}>Tasks : {filteredTodos.length}</h3>
         </div>
     );
 }
