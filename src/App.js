@@ -9,19 +9,20 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [localStoragestatus, setLocalStorageStatus] = useState(false);
 
   
   //USE EFFECT RUN ONCE
   useEffect(()=>{
     //Get from local
     if(localStorage.getItem("todos") === null || JSON.parse(localStorage.getItem("todos")).length <= 0){
-      let item;
-      let dummies = [];
-      for(item = 1; item <= 5; item++){
-        dummies.push({text: `dummy ${item}`, completed: false, id: Math.random()*1000});
-      }
-      setTodos(dummies);
-      localStorage.setItem("todos", JSON.stringify(dummies));
+      // let item;
+      // let dummies = [];
+      // for(item = 1; item <= 5; item++){
+      //   dummies.push({text: `dummy ${item}`, completed: false, id: Math.random()*1000});
+      // }
+      // setTodos(dummies);
+      localStorage.setItem("todos", JSON.stringify(todos));
     } else{
       let todolocal = JSON.parse(localStorage.getItem("todos"));
       setTodos(todolocal);
