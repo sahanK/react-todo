@@ -14,8 +14,14 @@ function App() {
   //USE EFFECT RUN ONCE
   useEffect(()=>{
     //Get from local
-    if(localStorage.getItem("todos") === null){
-      localStorage.setItem("todos", JSON.stringify([]));
+    if(localStorage.getItem("todos") === null || JSON.parse(localStorage.getItem("todos")).length <= 0){
+      let item;
+      let dummies = [];
+      for(item = 1; item <= 5; item++){
+        dummies.push({text: `dummy ${item}`, completed: false, id: Math.random()*1000});
+      }
+      setTodos(dummies);
+      localStorage.setItem("todos", JSON.stringify(todos));
     } else{
       let todolocal = JSON.parse(localStorage.getItem("todos"));
       setTodos(todolocal);
