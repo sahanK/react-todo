@@ -9,8 +9,6 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [localStoragestatus, setLocalStorageStatus] = useState(false);
-
   
   //USE EFFECT RUN ONCE
   useEffect(()=>{
@@ -22,7 +20,7 @@ function App() {
       //   dummies.push({text: `dummy ${item}`, completed: false, id: Math.random()*1000});
       // }
       // setTodos(dummies);
-      localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("todos", JSON.stringify([]));
     } else{
       let todolocal = JSON.parse(localStorage.getItem("todos"));
       setTodos(todolocal);
