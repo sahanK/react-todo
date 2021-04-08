@@ -9,6 +9,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [newItemAdded, setNewItemAdded] = useState(false);
   
   //USE EFFECT RUN ONCE
   useEffect(()=>{
@@ -49,7 +50,7 @@ function App() {
       <header>
         <h1>Todo list</h1>
       </header>
-      <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} setStatus={setStatus}/>
+      <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} setStatus={setStatus} newItemAdded={newItemAdded} setNewItemAdded={setNewItemAdded}/>
       <TodoList todos={todos} setTodos={setTodos} filteredTodos={filteredTodos} status={status}/>
     </div>
   );

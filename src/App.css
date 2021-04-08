@@ -15,11 +15,11 @@
   
   header,
   form {
-    min-height: 20vh;
+    min-height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   form input,
   form button {
     padding: 0.5rem;
@@ -37,7 +37,16 @@
     background: #ff6f47;
     color: white;
   }
+
+  .form-container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .todo-container {
+    margin-top: 20px;
     display: flex;
     flex-direction:column;
     justify-content: center;
