@@ -1,7 +1,9 @@
 import './App.css';
-import Form from './components/Form';
-import TodoList from './components/TodoList';
 import {useState, useEffect} from 'react';
+import About from './components/About';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 function App() {
   //State
@@ -22,8 +24,6 @@ function App() {
       let todosWithInvertedCompleteStatus = todolocal.map((todo)=> ({...todo, completed: !todo.completed}));
       console.log(todosWithInvertedCompleteStatus);
       setTodos(todosWithInvertedCompleteStatus);
-
-      
     }
   },[])
   //USE EFFECT
@@ -45,13 +45,32 @@ function App() {
   },[todos, status]);
 
   return (
-    <div className="App">
-      <header>
-        <h1>Todo list</h1>
-      </header>
-      <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} setStatus={setStatus} newItemAddingInProgress={newItemAddingInProgress} setNewItemAddingInProgress={setNewItemAddingInProgress}/>
-      <TodoList todos={todos} setTodos={setTodos} filteredTodos={filteredTodos} status={status}/>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <h1>Todo list</h1>
+        </header>
+        <Route path="/" exact render={()=>(
+          <div>
+            <Home 
+            todos={todos}
+            setTodos={setTodos}
+            inputText={inputText}
+            setInputText={setInputText}
+            setStatus={setStatus}
+            newItemAddingInProgress={newItemAddingInProgress}
+            setNewItemAddingInProgress={setNewItemAddingInProgress}
+            filteredTodos={filteredTodos}
+            status={status}
+            />
+            <Footer/>
+          </div>
+        )}>
+        </Route>
+        <Route path="/about" component={About}></Route>
+
+      </div>
+    </Router>
   );
 }
 
