@@ -19,7 +19,7 @@ function App() {
     } else{
       let todolocal = JSON.parse(localStorage.getItem("todos"));
       //Invert Todo completed status
-      let todosWithInvertedCompleteStatus = todolocal.map((todo)=> {return {...todo, completed: !todo.completed}});
+      let todosWithInvertedCompleteStatus = todolocal.map((todo)=> ({...todo, completed: !todo.completed}));
       console.log(todosWithInvertedCompleteStatus);
       setTodos(todosWithInvertedCompleteStatus);
 
