@@ -1,7 +1,7 @@
 import React from 'react';
 //import Expire from './Expire'
 
-const Form = ({inputText, setInputText, todos, setTodos, setStatus, newItemAdded, setNewItemAdded}) => {
+const Form = ({inputText, setInputText, todos, setTodos, setStatus, newItemAddingInProgress, setNewItemAddingInProgress}) => {
     const inputTextHandler = (event) =>{
         setInputText(event.target.value); 
     };
@@ -15,13 +15,17 @@ const Form = ({inputText, setInputText, todos, setTodos, setStatus, newItemAdded
             if(uncompleted.length >= 5){
                 alert("There are Many uncompleted tasks!");
             } else{
-                setNewItemAdded(true);
+                setNewItemAddingInProgress(true);
                 setTimeout(()=>{
-                    setTodos([
-                        ...todos, {text: inputText, completed: false, id: Math.random()*1000}
-                    ]);
+                    // let prevState = [...todos];
+                    // let newTask = {text: inputText, completed: false, id: Math.random()*1000};
+                    // let newState = [...prevState, newTask];
+                    setTodos((todos) => ([...todos, {text: inputText, completed: false, id: Math.random()*1000}]));
+                    // setTodos([
+                    //     ...todos, {text: inputText, completed: false, id: Math.random()*1000}
+                    // ]);
                     setInputText("");
-                    setNewItemAdded(false);
+                    setNewItemAddingInProgress(false);
                 },2000);
             }
         }
@@ -46,7 +50,7 @@ const Form = ({inputText, setInputText, todos, setTodos, setStatus, newItemAdded
                     </select>
                 </div>
             </form>
-            {newItemAdded ? <h3>Adding ...</h3> : ""}
+            {newItemAddingInProgress ? <h3>Adding ...</h3> : ""}
         </div>
     );
 } 

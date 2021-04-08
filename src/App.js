@@ -9,22 +9,21 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [newItemAdded, setNewItemAdded] = useState(false);
+  const [newItemAddingInProgress, setNewItemAddingInProgress] = useState(false);
   
   //USE EFFECT RUN ONCE
   useEffect(()=>{
     //Get from local
     if(localStorage.getItem("todos") === null || JSON.parse(localStorage.getItem("todos")).length <= 0){
-      // let item;
-      // let dummies = [];
-      // for(item = 1; item <= 5; item++){
-      //   dummies.push({text: `dummy ${item}`, completed: false, id: Math.random()*1000});
-      // }
-      // setTodos(dummies);
       localStorage.setItem("todos", JSON.stringify([]));
     } else{
       let todolocal = JSON.parse(localStorage.getItem("todos"));
-      setTodos(todolocal);
+      //Invert Todo completed status
+      let todosWithInvertedCompleteStatus = todolocal.map((todo)=> {return {...todo, completed: !todo.completed}});
+      console.log(todosWithInvertedCompleteStatus);
+      setTodos(todosWithInvertedCompleteStatus);
+
+      
     }
   },[])
   //USE EFFECT
@@ -50,7 +49,7 @@ function App() {
       <header>
         <h1>Todo list</h1>
       </header>
-      <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} setStatus={setStatus} newItemAdded={newItemAdded} setNewItemAdded={setNewItemAdded}/>
+      <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} setStatus={setStatus} newItemAddingInProgress={newItemAddingInProgress} setNewItemAddingInProgress={setNewItemAddingInProgress}/>
       <TodoList todos={todos} setTodos={setTodos} filteredTodos={filteredTodos} status={status}/>
     </div>
   );
