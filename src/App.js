@@ -1,14 +1,16 @@
 import './App.css';
-//import {useRoutes} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import routes from './routes'
+import {TodosContextProvider} from './components/TodosContext';
 
 function App() {
 
   const routeComponents = routes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />);
-
   return (
-    (routeComponents)
+    <TodosContextProvider>
+        {(routeComponents)}
+    </TodosContextProvider>
+
   );
 }
 

@@ -4,7 +4,6 @@ import {useHistory} from 'react-router-dom';
 const Footer = ({todos}) => {
     const history = useHistory();
     const onButtonClick = () => {
-        history.location.state = [...todos];
         history.push("/about", todos);
     }
     return(

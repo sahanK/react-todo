@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {TodosContext} from './TodosContext';
 //import Expire from './Expire'
 
-const Form = ({inputText, setInputText, todos, setTodos, setStatus, newItemAddingInProgress, setNewItemAddingInProgress}) => {
+const Form = ({inputText, setInputText, todos, setStatus, newItemAddingInProgress, setNewItemAddingInProgress}) => {
+    //Context
+    const {todosState, setTodosState} = useContext(TodosContext);
+    
     const inputTextHandler = (event) =>{
         setInputText(event.target.value); 
     };
@@ -11,19 +15,16 @@ const Form = ({inputText, setInputText, todos, setTodos, setStatus, newItemAddin
         if(inputText === ""){
             alert("Please add a task!");
         } else{
-            let uncompleted = todos.filter(todo => todo.completed === false);
+            let uncompleted = todosState.filter(todo => todo.completed === false);
             if(uncompleted.length >= 5){
                 alert("There are Many uncompleted tasks!");
             } else{
                 setNewItemAddingInProgress(true);
                 setTimeout(()=>{
-                    // let prevState = [...todos];
-                    // let newTask = {text: inputText, completed: false, id: Math.random()*1000};
-                    // let newState = [...prevState, newTask];
-                    setTodos((todos) => ([...todos, {text: inputText, completed: false, id: Math.random()*1000}]));
-                    // setTodos([
-                    //     ...todos, {text: inputText, completed: false, id: Math.random()*1000}
-                    // ]);
+                    setTodosState((todosState) => ([...todosState, {text: inputText, completed: false, id: Math.round(Math.random()*1000)}]));
+                    //Set to Context
+                    //setTodosState(todos);
+
                     setInputText("");
                     setNewItemAddingInProgress(false);
                 },2000);
