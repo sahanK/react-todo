@@ -3,7 +3,7 @@ import Todo from './Todo';
 import Expire from './Expire';
 import Wait from './Wait';
 
-const TodoList = ({todosState, setTodosState, filteredTodos, status}) => {
+const TodoList = ({todos, dispatch, filteredTodos, status}) => {
 
     return(
         <div className="todo-container">
@@ -15,8 +15,8 @@ const TodoList = ({todosState, setTodosState, filteredTodos, status}) => {
                             key={todo.id} 
                             text={todo.text} 
                             id={todo.id} 
-                            todosState={todosState} 
-                            setTodosState={setTodosState}
+                            todosState={todos} 
+                            dispatch={dispatch}
                             todo={todo}/>
                     ))}
                 </ul>

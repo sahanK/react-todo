@@ -1,18 +1,14 @@
 import React from 'react';
 
-const Todo = ({text, todo, todosState, setTodosState}) => {
+const Todo = ({text, todo, todos, dispatch}) => {
+        
     //Events
     const deleteHandler = () => {
-        setTodosState(todosState.filter(el => el.id !== todo.id));
+        dispatch({type: 'DELETE', id: todo.id});
     }
 
     const completeHandler = () => {
-        setTodosState(todosState.map((item)=>{
-            if(item.id === todo.id){
-                return{...item, completed: !item.completed}
-            }
-            return item;
-        }));
+        dispatch({type: 'TOGGLE', id: todo.id});
     }
 
     return(
