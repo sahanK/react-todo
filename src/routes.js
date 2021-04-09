@@ -4,11 +4,11 @@ import About from './components/About';
 const routes = [
     {
         path: '/',
-        element: <Home/>
+        component: Home
     },
     {
         path: '/about',
-        element: <About/>
+        component: About
     }
 ];
 

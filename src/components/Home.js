@@ -20,7 +20,7 @@ const Home = () => {
             let todolocal = JSON.parse(localStorage.getItem("todos"));
             //Invert Todo completed status
             let todosWithInvertedCompleteStatus = todolocal.map((todo)=> ({...todo, completed: !todo.completed}));
-            console.log(todosWithInvertedCompleteStatus);
+            //console.log(todosWithInvertedCompleteStatus);
             setTodos(todosWithInvertedCompleteStatus);
         }
         },[])
@@ -57,7 +57,7 @@ const Home = () => {
                 newItemAddingInProgress={newItemAddingInProgress} 
                 setNewItemAddingInProgress={setNewItemAddingInProgress}/>
             <TodoList todos={todos} setTodos={setTodos} filteredTodos={filteredTodos} status={status}/>
-            <Footer/>
+            <Footer todos={todos}/>
         </div>
     );
 }

@@ -154,3 +154,12 @@ select {
     transform: scale(1.5);
   }
   */
+  .nav-button{
+    background:#7ae97f;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: transparent;
+    color: rgb(102, 101, 101);
+    font-family: "Poppins", sans-serif;
+  }

@@ -1,12 +1,22 @@
-import React from 'react';
+import {Link,useLocation} from 'react-router-dom';
 
-const About = () => {
+const About = (props) => {
+    const location = useLocation();
+    const todoList = location.state.todoList;
+    console.log(todoList);
     return(
-        <div style={{textAlign:"center", marginTop: "40vh"}}>
-            <h4>Version 1.0.0</h4>
-            <a href="/"><h4>Home</h4></a>
+        <div>
+            <div style={{textAlign: "center", paddingTop: "20vh"}}>
+                <ul>
+                    {todoList.map(todo => <li key={todo.id}>{todo.text}</li>)}
+                </ul>
+            </div>
+            <div style={{textAlign:"center", marginTop: "20vh"}}>
+                <Link to="/"><button className="nav-button">Home</button></Link>
+            </div> 
+
         </div>
-    );
+    )
 }
 
 export default About;

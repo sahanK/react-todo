@@ -1,9 +1,16 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({todos}) => {
+
     return(
         <div style={{textAlign: "center", marginTop: "50px"}}>
-            <a href="/about">About Us</a>
+            <Link to={{
+                pathname: "/about",
+                state: {
+                    todoList: todos
+                }
+            }}><button className="nav-button">About Us</button></Link>
         </div>
     );
 }
