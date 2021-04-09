@@ -1,16 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const Footer = ({todos}) => {
-
+    const history = useHistory();
+    const onButtonClick = () => {
+        history.location.state = [...todos];
+        history.push("/about", todos);
+    }
     return(
-        <div style={{textAlign: "center", marginTop: "50px"}}>
-            <Link to={{
-                pathname: "/about",
-                state: {
-                    todoList: todos
-                }
-            }}><button className="nav-button">About Us</button></Link>
+        <div>
+            <div style={{textAlign: "center", marginTop: "50px"}}>
+                <button className="nav-button" onClick={onButtonClick}>ABOUT US</button>
+            </div>
         </div>
     );
 }

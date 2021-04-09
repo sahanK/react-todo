@@ -1,9 +1,12 @@
-import {Link,useLocation} from 'react-router-dom';
+import {Link, useHistory, withRouter} from 'react-router-dom';
 
 const About = (props) => {
-    const location = useLocation();
-    const todoList = location.state.todoList;
-    console.log(todoList);
+    //const location = useLocation();
+    //const todoList = location.state.todoList;
+    const history = useHistory();
+    const todoList = history.location.state;
+    //console.log(history);
+
     return(
         <div>
             <div style={{textAlign: "center", paddingTop: "20vh"}}>
@@ -19,4 +22,4 @@ const About = (props) => {
     )
 }
 
-export default About;
+export default withRouter(About);
